@@ -6,6 +6,8 @@ import httplib, urllib
 SCRAPE_LOG = "scrape.log"
 SCRAPE_DATA = "scrape.data"
 
+VIOLENT_CRIME_RATES = 2
+
 logFile = open(SCRAPE_LOG, 'a')
 dataFile = open(SCRAPE_DATA, 'a')
   
@@ -13,7 +15,7 @@ dataFile = open(SCRAPE_DATA, 'a')
 def getResponse():
 
   params = urllib.urlencode({'StateId': 33, 
-                             'BJSPopulationGroupId': 2, 
+                             'BJSPopulationGroupId': VIOLENT_CRIME_RATES, 
                              'CrimeCrossId': 13794, 
                              'DataType': 3,
                              'YearStart': 1985,
@@ -56,3 +58,4 @@ dataFile.write("")
 
 logFile.close()
 dataFile.close()
+
