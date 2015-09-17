@@ -13,7 +13,7 @@ params = urllib.urlencode({'StateId': 33,
                            'YearStart': 1985,
                            'NextPage': 'Get+Table'})
 
-print params
+#print params
 
 headers = {"Content-type": "application/x-www-form-urlencoded",
            "Accept": "text/plain"}
@@ -32,15 +32,19 @@ headers = {"POST": "/Search/Crime/Local/RunCrimeOneYearofData.cfm HTTP/1.1",
            "Accept-Language": "en-US,en;q=0.8",
            "Cookie": "topItem=1c; CFID=106361124; CFTOKEN=a10fcd62b8337ef1-12AD05B5-EC17-3180-BF29864F30881E06; _ga=GA1.2.762111162.1442274583"}
            
-print headers
+#print headers
 
-#conn = httplib.HTTPConnection("bugs.python.org")
-#conn.request("POST", "", params, headers)
-#response = conn.getresponse()
-#print response.status, response.reason
+conn = httplib.HTTPConnection("www.ucrdatatool.gov")
+#conn = httplib.HTTPConnection("localhost:8000")
+
+url = "/Search/Crime/Local/RunCrimeOneYearofData.cfm"
+conn.request("POST", url, params, headers)
+response = conn.getresponse()
+print
+print response.status, response.reason
 #302 Found
-#data = response.read()
-#data
+data = response.read()
+print data
 #$'Redirecting to <a href="http://bugs.python.org/issue12524">http://bugs.python.org/issue12524</a>'
-#conn.close()
+conn.close()
 
