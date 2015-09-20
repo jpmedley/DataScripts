@@ -1,0 +1,362 @@
+[
+  {
+    "City":"New York",
+    "Crime Cross ID":13794,
+    "State":"NY",
+    "State ID":33
+  },
+  {
+    "City":"Los Angeles",
+    "Crime Cross ID":1391,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Chicago",
+    "Crime Cross ID":4701,
+    "State":"IL",
+    "State ID":14
+  },
+  {
+    "City":"Houston",
+    "Crime Cross ID":19242,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"Philadelphia",
+    "Crime Cross ID":17184,
+    "State":"PA",
+    "State ID":39
+  },
+  {
+    "City":"Phoenix",
+    "Crime Cross ID":946,
+    "State":"AZ",
+    "State ID":3
+  },
+  {
+    "City":"San Antonio",
+    "Crime Cross ID":19680,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"San Diego",
+    "Crime Cross ID":1584,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Dallas",
+    "Crime Cross ID":19000,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"San Jose, CA",
+    "Crime Cross ID":1610,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Austin, TX",
+    "Crime Cross ID":19680,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"Jacksonville, FL",
+    "Crime Cross ID":2560,
+    "State":"FL",
+    "State ID":10
+  },
+  {
+    "City":"San Francisco",
+    "Crime Cross ID":1596,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Indianapolis",
+    "Crime Cross ID":5876,
+    "State":"IN",
+    "State ID":15
+  },
+  {
+    "City":"Columbus, OH",
+    "Crime Cross ID":14499,
+    "State":"OH",
+    "State ID":36
+  },
+  {
+    "City":"Fort Worth, TX",
+    "Crime Cross ID":19061,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"Charlotte, NC",
+    "Crime Cross ID":11304,
+    "State":"NC",
+    "State ID":34
+  },
+  {
+    "City":"Detroit",
+    "Crime Cross ID":8621,
+    "State":"MI",
+    "State ID":23
+  },
+  {
+    "City":"El Paso, TX",
+    "Crime Cross ID":18902,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"Seattle",
+    "Crime Cross ID":20915,
+    "State":"WA",
+    "State ID":48
+  },
+  {
+    "City":"Denver",
+    "Crime Cross ID":1941,
+    "State":"CO",
+    "State ID":6
+  },
+  {
+    "City":"Washington",
+    "Crime Cross ID":null,
+    "State":"DC",
+    "State ID":9
+  },
+  {
+    "City":"Memphis, TN",
+    "Crime Cross ID":18552,
+    "State":"TN",
+    "State ID":43
+  },
+  {
+    "City":"Boston",
+    "Crime Cross ID":7633,
+    "State":"MA",
+    "State ID":22
+  },
+  {
+    "City":"Nashville-Davidson, TN",
+    "Crime Cross ID":18576,
+    "State":"TN",
+    "State ID":43
+  },
+  {
+    "City":"Baltimore",
+    "Crime Cross ID":8057,
+    "State":"MD",
+    "State ID":21
+  },
+  {
+    "City":"Oklahoma City",
+    "Crime Cross ID":15574,
+    "State":"OK",
+    "State ID":37
+  },
+  {
+    "City":"Portland, OR",
+    "Crime Cross ID":15954,
+    "State":"OR",
+    "State ID":38
+  },
+  {
+    "City":"Las Vegas",
+    "Crime Cross ID":13171,
+    "State":"NV",
+    "State ID":29
+  },
+  {
+    "City":"Louisville/Jefferson County, KY",
+    "Crime Cross ID":6985,
+    "State":"KY",
+    "State ID":18
+  },
+  {
+    "City":"Milwaukee",
+    "Crime Cross ID":21295,
+    "State":"WI",
+    "State ID":50
+  },
+  {
+    "City":"Albuquerque, NM",
+    "Crime Cross ID":13015,
+    "State":"NM",
+    "State ID":32
+  },
+  {
+    "City":"Tucson, AZ",
+    "Crime Cross ID":978,
+    "State":"AZ",
+    "State ID":3
+  },
+  {
+    "City":"Fresno, CA",
+    "Crime Cross ID":1265,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Sacramento, CA",
+    "Crime Cross ID":1562,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Long Beach, CA",
+    "Crime Cross ID":1380,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Kansas City, MO",
+    "Crime Cross ID":10043,
+    "State":"MO",
+    "State ID":26
+  },
+  {
+    "City":"Mesa, AZ",
+    "Crime Cross ID":929,
+    "State":"AZ",
+    "State ID":3
+  },
+  {
+    "City":"Atlanta",
+    "Crime Cross ID":3312,
+    "State":"GA",
+    "State ID":11
+  },
+  {
+    "City":"Virginia Beach, VA",
+    "Crime Cross ID":20576,
+    "State":"VA",
+    "State ID":47
+  },
+  {
+    "City":"Omaha, NE",
+    "Crime Cross ID":11057,
+    "State":"NE",
+    "State ID":28
+  },
+  {
+    "City":"Colorado Springs, CO",
+    "Crime Cross ID":1918,
+    "State":"CO",
+    "State ID":6
+  },
+  {
+    "City":"Raleigh, NC",
+    "Crime Cross ID":11763,
+    "State":"NC",
+    "State ID":34
+  },
+  {
+    "City":"Miami",
+    "Crime Cross ID":2976,
+    "State":"FL",
+    "State ID":10
+  },
+  {
+    "City":"Oakland, CA",
+    "Crime Cross ID":1476,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Minneapolis",
+    "Crime Cross ID":9539,
+    "State":"MN",
+    "State ID":24
+  },
+  {
+    "City":"Tulsa, OK",
+    "Crime Cross ID":15692,
+    "State":"OK",
+    "State ID":37
+  },
+  {
+    "City":"Cleveland",
+    "Crime Cross ID":14477,
+    "State":"OH",
+    "State ID":36
+  },
+  {
+    "City":"Wichita, KS",
+    "Crime Cross ID":6643,
+    "State":"KS",
+    "State ID":17
+  },
+  {
+    "City":"New Orleans",
+    "Crime Cross ID":7453,
+    "State":"LA",
+    "State ID":19
+  },
+  {
+    "City":"Arlington, TX",
+    "Crime Cross ID":18752,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"Bakersfield, CA",
+    "Crime Cross ID":1028,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Tampa, FL",
+    "Crime Cross ID":3204,
+    "State":"FL",
+    "State ID":10
+  },
+  {
+    "City":"Aurora, CO",
+    "Crime Cross ID":1878,
+    "State":"CO",
+    "State ID":6
+  },
+  {
+    "City":"Urban Honolulu",
+    "Crime Cross ID":4037,
+    "State":"HI",
+    "State ID":12
+  },
+  {
+    "City":"Anaheim, CA",
+    "Crime Cross ID":1010,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Santa Ana, CA",
+    "Crime Cross ID":1630,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"Corpus Christi, TX",
+    "Crime Cross ID":18965,
+    "State":"TX",
+    "State ID":44
+  },
+  {
+    "City":"Riverside, CA",
+    "Crime Cross ID":1550,
+    "State":"CA",
+    "State ID":5
+  },
+  {
+    "City":"St. Louis",
+    "Crime Cross ID":10263,
+    "State":"MO",
+    "State ID":26
+  }
+]
