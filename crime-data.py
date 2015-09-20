@@ -2,15 +2,30 @@
 # https://docs.python.org/2/library/httplib.html
 
 import httplib, urllib
+import itertools
+import json
+from StringIO import StringIO
 
 SCRAPE_LOG = "scrape.log"
 SCRAPE_DATA = "scrape.data"
+CITIES_FILE = "city-ids.json"
 
 VIOLENT_CRIME_RATES = 2
 
 logFile = open(SCRAPE_LOG, 'a')
 dataFile = open(SCRAPE_DATA, 'a')
-  
+
+
+
+def Cities():
+  citiesFile = open(CITIES_FILE, 'r')
+  cityData = citiesFile.read()
+  citiesFile.close()
+  # print json.loads(cityData)
+  cityDataDict = json.loads(cityData)
+  for city in cityDataDict:
+    yield city
+
 
 def getResponse():
 
@@ -49,12 +64,17 @@ def getResponse():
   conn.close()
 # End getResponse
 
+cities = Cities()
+for city in cities:
+  print city
+
 response = getResponse()
 
 data = response.read()
 
 dataFile.write(data)
 dataFile.write("")
+
 
 logFile.close()
 dataFile.close()
