@@ -66,8 +66,11 @@ def getResponse(year, stateId, crimeCrossId):
 
 cities = Cities()
 for city in cities:
-  response = getResponse('1985', city['State ID'], city['Crime Cross ID'])
-  data = response.read()
+  year = 1985
+  while (year < 2014):
+    response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
+    data = response.read()
+    year += 1
 
   dataFile.write(data)
   dataFile.write("")
