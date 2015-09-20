@@ -27,13 +27,13 @@ def Cities():
     yield city
 
 
-def getResponse():
+def getResponse(year, stateId, crimeCrossId):
 
-  params = urllib.urlencode({'StateId': 33, 
+  params = urllib.urlencode({'StateId': stateId, 
                              'BJSPopulationGroupId': VIOLENT_CRIME_RATES, 
-                             'CrimeCrossId': 13794, 
+                             'CrimeCrossId': crimeCrossId, 
                              'DataType': 3,
-                             'YearStart': 1985,
+                             'YearStart': year,
                              'NextPage': 'Get+Table'})
 
   headers = {"Content-type": "application/x-www-form-urlencoded",
@@ -66,14 +66,11 @@ def getResponse():
 
 cities = Cities()
 for city in cities:
-  print city
+  response = getResponse('1985', city['State ID'], city['Crime Cross ID'])
+  data = response.read()
 
-response = getResponse()
-
-data = response.read()
-
-dataFile.write(data)
-dataFile.write("")
+  dataFile.write(data)
+  dataFile.write("")
 
 
 logFile.close()
