@@ -11,7 +11,7 @@ VIOLENT_CRIME_RATES = 2
 
 logFile = open(SCRAPE_LOG, 'a')
 
-conn = httplib.HTTPConnection("www.ucrdatatool.gov")
+conn = httplib.HTTPConnection("www.ucrdatatool.gov", timeout=10)
 
 def Cities():
   citiesFile = open(CITIES_FILE, 'r')
@@ -45,12 +45,9 @@ def getResponse(year, stateId, crimeCrossId):
              "Accept-Language": "en-US,en;q=0.8",
              "Cookie": "topItem=1c; CFID=106361124; CFTOKEN=a10fcd62b8337ef1-12AD05B5-EC17-3180-BF29864F30881E06; _ga=GA1.2.762111162.1442274583"}
 
-
   url = "/Search/Crime/Local/RunCrimeOneYearofData.cfm"
   conn.request("POST", url, params, headers)
   response = conn.getresponse()
-  log_string = "%s: %s\n" % (response.status, response.reason)
-  logFile.write(log_string)
   return response
 # End getResponse
 
@@ -59,13 +56,16 @@ for city in cities:
   year = 1985
   while (year < 2014):
     response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
-    data = response.read()
+    if (response.status != 200):
+      log_string = "%s: %s\n" % (response.status, response.reason)
+      logFile.write(log_string)
+    else:
+      data = response.read()
+      fileName = city['City'] + str(year) + ".html"
+      dataFile = open(fileName, 'a')
+      dataFile.write(data)
+      dataFile.close()
     year += 1
-
-    fileName = city['City'] + str(year) + ".html"
-    dataFile = open(fileName, 'a')
-    dataFile.write(data)
-    dataFile.close()
 
 conn.close()
 logFile.close()
