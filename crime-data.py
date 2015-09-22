@@ -60,14 +60,14 @@ cities = Cities()
 for city in cities:
   year = 1985
   while (year < 2014):
-  	response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
+    response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
     data = response.read()
     year += 1
 
     fileName = city['City'] + str(year) + ".html"
     dataFile = open(fileName, 'a')
-  	dataFile.write(data)
-  	dataFile.close()
+    dataFile.write(data)
+    dataFile.close()
 
 logFile.close()
 
