@@ -7,21 +7,16 @@ import json
 from StringIO import StringIO
 
 SCRAPE_LOG = "scrape.log"
-SCRAPE_DATA = "scrape.data"
 CITIES_FILE = "city-ids.json"
 
 VIOLENT_CRIME_RATES = 2
 
 logFile = open(SCRAPE_LOG, 'a')
-dataFile = open(SCRAPE_DATA, 'a')
-
-
 
 def Cities():
   citiesFile = open(CITIES_FILE, 'r')
   cityData = citiesFile.read()
   citiesFile.close()
-  # print json.loads(cityData)
   cityDataDict = json.loads(cityData)
   for city in cityDataDict:
     yield city
@@ -35,9 +30,6 @@ def getResponse(year, stateId, crimeCrossId):
                              'DataType': 3,
                              'YearStart': year,
                              'NextPage': 'Get+Table'})
-
-  headers = {"Content-type": "application/x-www-form-urlencoded",
-             "Accept": "text/plain"}
 
   headers = {"POST": "/Search/Crime/Local/RunCrimeOneYearofData.cfm HTTP/1.1",
              "Host": "www.ucrdatatool.gov",
@@ -68,14 +60,14 @@ cities = Cities()
 for city in cities:
   year = 1985
   while (year < 2014):
-    response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
+  	response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
     data = response.read()
     year += 1
 
-  dataFile.write(data)
-  dataFile.write("")
-
+    fileName = city['City'] + str(year) + ".html"
+    dataFile = open(fileName, 'a')
+  	dataFile.write(data)
+  	dataFile.close()
 
 logFile.close()
-dataFile.close()
 
