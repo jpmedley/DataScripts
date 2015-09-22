@@ -2,9 +2,7 @@
 # https://docs.python.org/2/library/httplib.html
 
 import httplib, urllib
-import itertools
 import json
-from StringIO import StringIO
 
 SCRAPE_LOG = "scrape.log"
 CITIES_FILE = "city-ids.json"
@@ -12,6 +10,8 @@ CITIES_FILE = "city-ids.json"
 VIOLENT_CRIME_RATES = 2
 
 logFile = open(SCRAPE_LOG, 'a')
+
+conn = httplib.HTTPConnection("www.ucrdatatool.gov")
 
 def Cities():
   citiesFile = open(CITIES_FILE, 'r')
@@ -45,7 +45,6 @@ def getResponse(year, stateId, crimeCrossId):
              "Accept-Language": "en-US,en;q=0.8",
              "Cookie": "topItem=1c; CFID=106361124; CFTOKEN=a10fcd62b8337ef1-12AD05B5-EC17-3180-BF29864F30881E06; _ga=GA1.2.762111162.1442274583"}
 
-  conn = httplib.HTTPConnection("www.ucrdatatool.gov")
 
   url = "/Search/Crime/Local/RunCrimeOneYearofData.cfm"
   conn.request("POST", url, params, headers)
@@ -53,7 +52,6 @@ def getResponse(year, stateId, crimeCrossId):
   log_string = "%s: %s\n" % (response.status, response.reason)
   logFile.write(log_string)
   return response
-  conn.close()
 # End getResponse
 
 cities = Cities()
@@ -69,5 +67,6 @@ for city in cities:
     dataFile.write(data)
     dataFile.close()
 
+conn.close()
 logFile.close()
 
