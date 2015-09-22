@@ -1,8 +1,8 @@
 #!/usr/bin/python
-# https://docs.python.org/2/library/httplib.html
 
 import httplib, urllib
 import json
+import sys
 
 SCRAPE_LOG = "scrape.log"
 CITIES_FILE = "city-ids.json"
@@ -10,8 +10,6 @@ CITIES_FILE = "city-ids.json"
 VIOLENT_CRIME_RATES = 2
 
 logFile = open(SCRAPE_LOG, 'a')
-
-conn = httplib.HTTPConnection("www.ucrdatatool.gov", timeout=10)
 
 def Cities():
   citiesFile = open(CITIES_FILE, 'r')
@@ -45,9 +43,13 @@ def getResponse(year, stateId, crimeCrossId):
              "Accept-Language": "en-US,en;q=0.8",
              "Cookie": "topItem=1c; CFID=106361124; CFTOKEN=a10fcd62b8337ef1-12AD05B5-EC17-3180-BF29864F30881E06; _ga=GA1.2.762111162.1442274583"}
 
+  conn = httplib.HTTPConnection("www.ucrdatatool.gov", timeout=10)
   url = "/Search/Crime/Local/RunCrimeOneYearofData.cfm"
   conn.request("POST", url, params, headers)
-  response = conn.getresponse()
+  try:
+    response = conn.getresponse()
+  except:
+    raise
   return response
 # End getResponse
 
@@ -55,18 +57,20 @@ cities = Cities()
 for city in cities:
   year = 1985
   while (year < 2014):
-    response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
-    if (response.status != 200):
-      log_string = "%s: %s\n" % (response.status, response.reason)
+    try:
+      response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
+    except:
+      log_string = "Can't find %s\n" % (city['City'] + ", " + str(year))
       logFile.write(log_string)
-    else:
-      data = response.read()
-      fileName = city['City'] + str(year) + ".html"
-      dataFile = open(fileName, 'a')
-      dataFile.write(data)
-      dataFile.close()
+      year += 1
+      continue
+    data = response.read()
+    fileName = city['City'] + str(year) + ".html" 
+    dataFile = open(fileName, 'w')
+    dataFile.write(data)
+    dataFile.close()
     year += 1
 
-conn.close()
+
 logFile.close()
 
