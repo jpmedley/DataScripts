@@ -14,11 +14,11 @@ for file in listing:
     file = file.partition('.')[0]
     year = file[-4:]
     city = file[:(len(file) - 4)]
+    if (city not in cities):
+      cities[city] = dict()
     for line in currentFile:
       if (string.find(line, "rate vcrime2 murd2") > 0):
         value = re.search('<font size="2">(.*)</font>', line)
-        if (city not in cities):
-          cities[city] = dict()
         cities[city][year] = value.group(1).strip()
 murders = open('murders.csv', 'a')
 

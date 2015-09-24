@@ -2,6 +2,7 @@
 
 import httplib, urllib
 import json
+import socket
 import sys
 
 SCRAPE_LOG = "scrape.log"
@@ -54,15 +55,21 @@ def getResponse(year, stateId, crimeCrossId):
 # End getResponse
 
 cities = Cities()
+cityCount = 0
 for city in cities:
+  cityCount += 1
+  print ("now retrieving data for " + city['City'])
   year = 1985
   while (year < 2014):
     try:
       response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
-    except:
+    except socket.timeout:
       log_string = "Can't find %s\n" % (city['City'] + ", " + str(year))
       logFile.write(log_string)
+      print log_string
       year += 1
+      continue
+    except:
       continue
     data = response.read()
     fileName = city['City'] + str(year) + ".html" 
@@ -71,6 +78,6 @@ for city in cities:
     dataFile.close()
     year += 1
 
-
+print ("%s cities processed." % str(cityCount))
 logFile.close()
 
