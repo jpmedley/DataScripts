@@ -1,11 +1,13 @@
 #!/usr/bin/python
 
+from datetime import date
+
 import httplib, urllib
 import json
 import socket
 import sys
 
-SCRAPE_LOG = "scrape.log"
+SCRAPE_LOG = "scrape" + date.today() + ".log"
 CITIES_FILE = "city-ids.json"
 
 VIOLENT_CRIME_RATES = 2
