@@ -64,7 +64,7 @@ for city in cities:
     try:
       response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
     except socket.timeout:
-      log_string = "Can't find %s\n" % (city['City'] + ", " + str(year))
+      log_string = "Can't find %s" % (city['City'] + ", " + str(year))
       logFile.write(log_string)
       print log_string
       year += 1
