@@ -3,11 +3,6 @@
 import os
 import sys
 
-print(sys.argv[1])
-
-def newOutFile(name):
-    print(name)
-
 if len(sys.argv) != 3:
     raise Exception("Wrong number of arguments.")
 if (sys.argv[1] != '-f') and (sys.argv[1] != '--file'):
@@ -18,5 +13,8 @@ if not os.path.isfile(sys.argv[2]):
 with open(sys.argv[2]) as data:
     for line in data:
         if line.find('Estimated') == 0:
-            outFile = newOutFile(line.rpartition(' ')[2])
+            fileName = line.rpartition('Estimated crime in ')[2].strip() + ".csv"
+            outFile = open(fileName, 'w')
+        outFile.write(line)
+            
             
