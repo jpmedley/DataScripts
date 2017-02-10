@@ -7,7 +7,7 @@ import json
 import socket
 import sys
 
-SCRAPE_LOG = "scrape" + date.today() + ".log"
+SCRAPE_LOG = "scrape" + str(date.today()) + ".log"
 CITIES_FILE = "city-ids.json"
 OUT_PATH = "out/"
 
@@ -57,30 +57,32 @@ def getResponse(year, stateId, crimeCrossId):
   return response
 # End getResponse
 
-cities = Cities()
-cityCount = 0
-for city in cities:
-  cityCount += 1
-  print ("now retrieving data for " + city['City'])
-  year = 1985
-  while (year < 2014):
-    try:
-      response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
-    except socket.timeout:
-      log_string = "Can't find %s" % (city['City'] + ", " + str(year))
-      logFile.write(log_string)
-      print log_string
+def getCityData(startYear, endYear):
+  cities = Cities()
+  cityCount = 0
+  for city in cities:
+    cityCount += 1
+    print ("now retrieving data for " + city['City'])
+    year = startYear
+    while (year < endYear):
+      try:
+        response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
+      except socket.timeout:
+        log_string = "Can't find %s" % (city['City'] + ", " + str(year))
+        logFile.write(log_string)
+        print log_string
+        year += 1
+        continue
+      except:
+        continue
+      data = response.read()
+      fileName = OUT_PATH + city['City'] + str(year) + ".html" 
+      dataFile = open(fileName, 'w')
+      dataFile.write(data)
+      dataFile.close()
       year += 1
-      continue
-    except:
-      continue
-    data = response.read()
-    fileName = OUT_PATH + city['City'] + str(year) + ".html" 
-    dataFile = open(fileName, 'w')
-    dataFile.write(data)
-    dataFile.close()
-    year += 1
 
-print ("%s cities processed." % str(cityCount))
-logFile.close()
+  print ("%s cities processed." % str(cityCount))
+  logFile.close()
 
+getCityData(sys.argv[1], sys.argv[2])
