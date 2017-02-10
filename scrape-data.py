@@ -63,8 +63,9 @@ def getCityData(startYear, endYear):
   for city in cities:
     cityCount += 1
     print ("now retrieving data for " + city['City'])
-    year = startYear
-    while (year < endYear):
+    year = int(startYear)
+    end = int(endYear)
+    while (year < end):
       try:
         response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
       except socket.timeout:

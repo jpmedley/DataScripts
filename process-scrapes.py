@@ -5,9 +5,11 @@ import os
 import re
 import string
 
+OUT_PATH = "out/"
+
 cities = dict() #key = city name, value = years
 
-listing = os.listdir(".")
+listing = os.listdir(OUT_PATH)
 for file in listing:
   if (string.find(file, ".html") > 0):
     currentFile = open(file, 'r')
