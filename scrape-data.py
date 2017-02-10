@@ -9,6 +9,7 @@ import sys
 
 SCRAPE_LOG = "scrape" + date.today() + ".log"
 CITIES_FILE = "city-ids.json"
+OUT_PATH = "out/"
 
 VIOLENT_CRIME_RATES = 2
 
@@ -74,7 +75,7 @@ for city in cities:
     except:
       continue
     data = response.read()
-    fileName = city['City'] + str(year) + ".html" 
+    fileName = OUT_PATH + city['City'] + str(year) + ".html" 
     dataFile = open(fileName, 'w')
     dataFile.write(data)
     dataFile.close()
