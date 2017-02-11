@@ -13,7 +13,7 @@ OUT_PATH = "out/"
 
 VIOLENT_CRIME_RATES = 2
 
-logFile = open(SCRAPE_LOG, 'a')
+logFile
 
 def Cities():
   citiesFile = open(CITIES_FILE, 'r')
@@ -23,8 +23,16 @@ def Cities():
   for city in cityDataDict:
     yield city
     
-def logger(message, err=''):
-
+def logger(message, err='', stack='', prnt=False):
+    if not logFile:
+        logFile = open(SCRAPE_LOG, 'a')
+    if err=='':
+        err = "scrapeData"
+    outMessage = err + ": " + message + '\n' + stack
+    logFile.write(outMessage)
+    if prnt:
+        print outMessage
+# End logger
 
 def getResponse(year, stateId, crimeCrossId):
 
@@ -58,6 +66,7 @@ def getResponse(year, stateId, crimeCrossId):
   return response
 # End getResponse
 
+
 def getCityData(startYear, endYear):
   cities = Cities()
   cityCount = 0
@@ -70,14 +79,21 @@ def getCityData(startYear, endYear):
       try:
         response = getResponse(str(year), city['State ID'], city['Crime Cross ID'])
         data = response.read()
+      except ssl.SSLError:
+        logString = "Can't find %s" % (city['City'] + ", " + str(year))
+        logger(logString, 'ssl.SSLError',  sys.exc_info()[0], True)
+        year += 1
+        continue
       except socket.timeout:
-        log_string = "Can't find %s" % (city['City'] + ", " + str(year))
-        logFile.write(log_string)
-        print log_string
+        logString = "Can't find %s" % (city['City'] + ", " + str(year))
+        logger(logString, 'ssl.SSLError',  sys.exc_info()[0], True)
         year += 1
         continue
       except:
+        logger("Unknown error", '', sys.exec_info()[0], true)
+        year += 1
         continue
+
       fileName = OUT_PATH + city['City'] + str(year) + ".html" 
       dataFile = open(fileName, 'w')
       dataFile.write(data)
