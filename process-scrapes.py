@@ -33,7 +33,7 @@ def processScrapes(startYear, endYear):
     row = city + "\t"
     year = int(startYear)
     end = int(endYear)
-    while (year < end):
+    while (year <= end):
       if (str(year) in cities[city]):
         row = row + cities[city][str(year)] + "\t"
       else:
